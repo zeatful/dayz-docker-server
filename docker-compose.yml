@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  dayz-server:
+    build: .
+    image: dayz-server:latest
+    container_name: dayz-server
+    ports:
+      # game
+      - "2302:2302/udp"
+      - "2303:2303/udp"
+      - "2304:2304/udp"
+      - "2305:2305/udp"
+      # steam
+      - "8766:8766/udp"
+      - "2310:2310/tcp"
+      # rcon (preferred)
+      - "27016:27016/udp"
+    volumes:
+      - ./config:/dayz/server
